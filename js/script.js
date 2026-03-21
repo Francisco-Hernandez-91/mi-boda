@@ -68,30 +68,28 @@ function copyToClipboard(text) {
 document.getElementById('rsvp-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // URL corregida con el enlace que me proporcionaste
+    // Tu URL exacta de Google
     const scriptURL = 'https://script.google.com/macros/s/AKfycby3qvAslky9BY1O5I_mzEWuxUJJP3nxz3v38nSfoDJdP3R0LvcHD6c3Cv7mJKarDrkY/exec';
 
-    const formData = {
-        name: document.getElementById('name').value,
-        attendance: document.getElementById('attendance').value,
-        guests: document.getElementById('guests').value || "1",
-        message: document.getElementById('message').value
-    };
+    // Capturamos los datos del formulario
+    const formData = new FormData();
+    formData.append('name', document.getElementById('name').value);
+    formData.append('attendance', document.getElementById('attendance').value);
+    formData.append('guests', document.getElementById('guests').value || "1");
+    formData.append('message', document.getElementById('message').value);
 
-    fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+    // Enviamos usando el método clásico que mejor acepta Google Apps Script
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: formData,
+        mode: 'no-cors' 
     })
     .then(() => {
-        alert("¡Gracias Francisco y Joselin! La confirmación se ha registrado en Google Drive.");
+        alert("¡Gracias! Tu confirmación se ha registrado con éxito.");
         document.getElementById('rsvp-form').reset();
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert("Hubo un problema de conexión. Por favor, intenta de nuevo.");
+        console.error('Error!', error.message);
+        alert("Hubo un error al enviar. Por favor intenta de nuevo.");
     });
 });
