@@ -68,17 +68,30 @@ function copyToClipboard(text) {
 document.getElementById('rsvp-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const attendance = document.getElementById('attendance').value;
-    const guests = document.getElementById('guests').value || "1";
-    const message = document.getElementById('message').value;
+    // URL corregida con el enlace que me proporcionaste
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby3qvAslky9BY1O5I_mzEWuxUJJP3nxz3v38nSfoDJdP3R0LvcHD6c3Cv7mJKarDrkY/exec';
 
-    // Tu número de WhatsApp (incluye código de país, ej: 521 para México)
-    const tel = "521XXXXXXXXXX"; 
+    const formData = {
+        name: document.getElementById('name').value,
+        attendance: document.getElementById('attendance').value,
+        guests: document.getElementById('guests').value || "1",
+        message: document.getElementById('message').value
+    };
 
-    const text = `¡Hola! Soy ${name}. Confirmo que ${attendance} asistiré a la boda. Número de invitados: ${guests}. Mensaje: ${message}`;
-    const encodedText = encodeURIComponent(text);
-    
-    // Abre WhatsApp en una pestaña nueva
-    window.open(`https://wa.me/${tel}?text=${encodedText}`, '_blank');
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(() => {
+        alert("¡Gracias Francisco y Joselin! La confirmación se ha registrado en Google Drive.");
+        document.getElementById('rsvp-form').reset();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("Hubo un problema de conexión. Por favor, intenta de nuevo.");
+    });
 });
