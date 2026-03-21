@@ -1,0 +1,620 @@
+:root {
+    --gold: #C5A059;
+    --dark: #1a1a1a;
+    --white: #ffffff;
+    --glass: rgba(255, 255, 255, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--dark); /* Esto evitará que se vea blanco */
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+h1, h2 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 3px;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* CORRECCIÓN: ../ sube un nivel para salir de 'css' y entrar a 'img' */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('../img/hero-bg.jpg') no-repeat center center/cover;
+}
+
+.hero-content {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Para Safari */
+    padding: 3rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem); /* Se adapta a móviles */
+    margin-bottom: 1rem;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 2rem 0;
+}
+
+.countdown-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 70px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.countdown-item span {
+    font-size: 1.8rem;
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.countdown-item small {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    color: var(--white);
+}
+
+/* Ajuste para móviles */
+@media screen and (max-width: 480px) {
+    .countdown {
+        gap: 8px;
+    }
+    .countdown-item {
+        min-width: 60px;
+        padding: 8px;
+    }
+    .countdown-item span {
+        font-size: 1.4rem;
+    }
+}
+
+.btn-floral {
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-floral:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+.details {
+    padding: 100px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Sección de Eventos */
+.event-section {
+    padding: 80px 20px;
+    background-color: #f9f9f9; /* Un tono claro para contrastar con el Hero oscuro */
+    color: var(--dark);
+    text-align: center;
+}
+
+.section-title {
+    margin-bottom: 50px;
+    color: var(--gold);
+    font-size: 2.5rem;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.event-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    border-top: 4px solid var(--gold);
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+}
+
+.event-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.event-card h3 {
+    font-family: 'Cinzel', serif;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.time {
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.address {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.btn-location {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid var(--dark);
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.btn-location:hover {
+    background: var(--dark);
+    color: var(--white);
+}
+
+.calendar-action {
+    margin-top: 60px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+/* Sección de Regalos */
+.gifts-section {
+    padding: 100px 20px;
+    background-color: var(--dark);
+    color: var(--white);
+    text-align: center;
+}
+
+.section-title-dark {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.gift-text {
+    max-width: 600px;
+    margin: 0 auto 50px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.gift-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.gift-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(197, 160, 89, 0.3); /* Dorado sutil */
+    padding: 40px;
+    border-radius: 15px;
+    flex: 1;
+    min-width: 280px;
+    transition: all 0.4s ease;
+}
+
+.gift-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--gold);
+}
+
+.gift-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.gift-card h3 {
+    font-family: 'Cinzel', serif;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.btn-floral-dark {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.btn-copy {
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 10px 25px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+
+/* Sección RSVP */
+.rsvp-section {
+    padding: 100px 20px;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+}
+
+.rsvp-container {
+    background: var(--white);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.rsvp-form {
+    margin-top: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    border-color: var(--gold);
+}
+
+.final-footer {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: var(--dark);
+    color: rgba(255,255,255,0.6);
+}
+
+.final-footer p {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+/* Sección Nuestra Historia */
+.story-section {
+    padding: 100px 20px;
+    background-color: var(--white);
+    color: var(--dark);
+    position: relative;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* La línea vertical central */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--gold);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 20px 0;
+    position: relative;
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+/* Punto en la línea de tiempo */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: var(--white);
+    border: 3px solid var(--gold);
+    top: 30px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-content {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.timeline-content h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.timeline-date {
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    color: var(--dark);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+/* Alternar lados */
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 40px;
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -10px;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 40px;
+}
+
+/* Responsivo para móviles */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-item::after {
+        left: 21px;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+}
+
+/* Sección Galería */
+.gallery-section {
+    padding: 100px 20px;
+    background-color: var(--dark);
+    color: var(--white);
+    text-align: center;
+}
+
+.gallery-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-scroll::-webkit-scrollbar {
+    height: 10px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 5px;
+}
+
+.gallery-scroll::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+.gallery-item {
+    flex: 0 0 calc(33.33% - 20px); /* 3 fotos por vista en desktop */
+    scroll-snap-align: start;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 300px; /* Ajusta la altura a tu gusto */
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsivo para móviles */
+@media screen and (max-width: 768px) {
+    .gallery-item {
+        flex: 0 0 calc(80% - 20px); /* 1 foto casi completa en móvil */
+        height: 250px;
+    }
+}
+
+/* Sección de Dedicatoria */
+.dedication-section {
+    padding: 100px 20px;
+    background-color: #fdfdfd; /* Un tono casi blanco, muy puro */
+    text-align: center;
+}
+
+.dedication-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding: 40px;
+}
+
+.quote-icon {
+    font-family: 'Cinzel', serif;
+    font-size: 8rem;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+}
+
+.dedication-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-style: italic;
+    color: #444;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.signature {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-top: 20px;
+}
+
+/* Ajuste para móviles */
+@media screen and (max-width: 768px) {
+    .dedication-text {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+    .quote-icon {
+        font-size: 6rem;
+    }
+}
+
+/* Widget de Calendario Minimalista */
+.calendar-widget {
+    width: 140px;
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin: 20px auto;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.cal-header {
+    background: var(--gold); /* O un rojo vino si prefieres */
+    color: var(--white);
+    padding: 8px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+.cal-body {
+    padding: 15px 5px;
+    display: flex;
+    flex-direction: column;
+    color: var(--dark);
+}
+
+.cal-day {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.cal-number {
+    font-size: 3rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    line-height: 1;
+    margin: 5px 0;
+}
+
+.cal-year {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: #555;
+}
+
+.foto-pareja-redonda { 
+    width: 180px; height: 180px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin: 0 auto 30px; 
+    border: 4px solid white; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: block;
+}
