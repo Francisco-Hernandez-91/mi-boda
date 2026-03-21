@@ -68,28 +68,18 @@ function copyToClipboard(text) {
 document.getElementById('rsvp-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // Tu URL exacta de Google
-    const scriptURL = 'https://script.google.com/macros/s/AKfycby3qvAslky9BY1O5I_mzEWuxUJJP3nxz3v38nSfoDJdP3R0LvcHD6c3Cv7mJKarDrkY/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby3qvAslky9BY1O5I_mzEWuxUJJP3nxz3v38nSfoDJdP3R0LvcHD6c3Cv7mJKarDrkY/exec'; // Pega la URL que acabas de generar
 
-    // Capturamos los datos del formulario
     const formData = new FormData();
-    formData.append('name', document.getElementById('name').value);
-    formData.append('attendance', document.getElementById('attendance').value);
-    formData.append('guests', document.getElementById('guests').value || "1");
-    formData.append('message', document.getElementById('message').value);
+    formData.append('Nombre', document.getElementById('name').value);
+    formData.append('Asistencia', document.getElementById('attendance').value);
+    formData.append('Invitados', document.getElementById('guests').value || "1");
+    formData.append('Mensaje', document.getElementById('message').value);
 
-    // Enviamos usando el método clásico que mejor acepta Google Apps Script
-    fetch(scriptURL, { 
-        method: 'POST', 
-        body: formData,
-        mode: 'no-cors' 
-    })
+    fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
     .then(() => {
-        alert("¡Gracias! Tu confirmación se ha registrado con éxito.");
+        alert("¡Confirmación guardada en Drive!");
         document.getElementById('rsvp-form').reset();
     })
-    .catch(error => {
-        console.error('Error!', error.message);
-        alert("Hubo un error al enviar. Por favor intenta de nuevo.");
-    });
+    .catch(error => console.error('Error!', error.message));
 });
