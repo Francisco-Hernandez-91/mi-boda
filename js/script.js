@@ -41,8 +41,6 @@ setInterval(updateCountdown, 1000);
 // Ejecutar una vez al cargar para evitar el 00 inicial
 updateCountdown();
 
-setInterval(countdown, 1000);
-
 // Control de Audio
 const playBtn = document.getElementById('play-btn');
 const music = document.getElementById('bg-music');
@@ -65,21 +63,36 @@ function copyToClipboard(text) {
     });
 }
 
-document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycby3qvAslky9BY1O5I_mzEWuxUJJP3nxz3v38nSfoDJdP3R0LvcHD6c3Cv7mJKarDrkY/exec'; // Pega la URL que acabas de generar
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxTpuY7G4iuTx2cao3_rnuvkbK7NnCa0_e5S6zDwVuv0fVx5AZiVX18NFOJjLdKYcZrNA/exec';
 
-    const formData = new FormData();
-    formData.append('Nombre', document.getElementById('name').value);
-    formData.append('Asistencia', document.getElementById('attendance').value);
-    formData.append('Invitados', document.getElementById('guests').value || "1");
-    formData.append('Mensaje', document.getElementById('message').value);
+    const data = {
+        nombre: document.getElementById('name').value,
+        asistencia: document.getElementById('attendance').value,
+        invitados: document.getElementById('guests').value || "1",
+        mensaje: document.getElementById('message').value
+    };
 
-    fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-    .then(() => {
-        alert("¡Confirmación guardada en Drive!");
-        document.getElementById('rsvp-form').reset();
-    })
-    .catch(error => console.error('Error!', error.message));
+    try {
+        const response = await fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+            alert("¡Confirmación enviada ❤️!");
+            document.getElementById('rsvp-form').reset();
+        }
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert("Hubo un error al enviar la confirmación 😢");
+    }
 });
