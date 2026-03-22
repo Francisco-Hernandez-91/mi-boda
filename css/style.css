@@ -30,12 +30,13 @@ display: flex;
 align-items: center;
 justify-content: center;
 text-align: center;
+font-size: 15px;
 background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
 url('../img/hero-bg.jpg') no-repeat center center/cover;
 }
 
 .nombres-portada{
-    font-size: 30px;
+    font-size: 20px;
     font-family: var(--fuente-nombres);
     font-size: 4.5rem; /* Ajustado para que no se salga de la pantalla del celular */
     line-height: 0.9;  /* Al estar en 3 líneas, un número menor a 1 hace que se vean más elegantes y juntas */
