@@ -45,7 +45,7 @@ url('../img/hero-bg.jpg') no-repeat center center/cover;
     text-align: center;
 }
 
-}
+
 .hero-content {
 background: var(--glass);
 backdrop-filter: blur(10px);
