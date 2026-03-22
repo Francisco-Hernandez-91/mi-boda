@@ -3,6 +3,7 @@
 --dark: #1a1a1a;
 --white: #ffffff;
 --glass: rgba(255, 255, 255, 0.15);
+--fuente-nombres: 'Great Vibes', cursive;
 }
 
 * {
@@ -33,6 +34,18 @@ background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
 url('../img/hero-bg.jpg') no-repeat center center/cover;
 }
 
+.nombres-portada{
+    font-family: var(--fuente-nombres);
+    font-size: 4.5rem; /* Ajustado para que no se salga de la pantalla del celular */
+    line-height: 0.9;  /* Al estar en 3 líneas, un número menor a 1 hace que se vean más elegantes y juntas */
+    display: flex;
+    flex-direction: column; /* Esto es lo que crea las 3 líneas: Joselin / y / Francisco */
+    align-items: center;    /* Centra las 3 partes horizontalmente */
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+}
 .hero-content {
 background: var(--glass);
 backdrop-filter: blur(10px);
