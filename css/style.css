@@ -19,7 +19,7 @@ color: var(--white);
 overflow-x: hidden;
 }
 
-h1, h2 {
+h2 {
 font-family: 'Cinzel', serif;
 letter-spacing: 3px;
 }
