@@ -3,7 +3,7 @@
 --dark: #1a1a1a;
 --white: #ffffff;
 --glass: rgba(255, 255, 255, 0.15);
---fuente-nombres: 'Great Vibes', cursive;
+--fuente-nombres:'Great Vibes', cursive;
 }
 
 * {
@@ -35,6 +35,7 @@ url('../img/hero-bg.jpg') no-repeat center center/cover;
 }
 
 .nombres-portada{
+    font-size: 30px;
     font-family: var(--fuente-nombres);
     font-size: 4.5rem; /* Ajustado para que no se salga de la pantalla del celular */
     line-height: 0.9;  /* Al estar en 3 líneas, un número menor a 1 hace que se vean más elegantes y juntas */
