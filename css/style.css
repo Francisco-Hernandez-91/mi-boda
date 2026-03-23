@@ -391,3 +391,22 @@ border-top: 4px solid var(--gold);
 }
 
 .check-icon { font-size: 3rem; color: var(--gold); margin-bottom: 10px; }
+
+@media screen and (max-width: 480px) {
+    .rsvp-section {
+        padding: 60px 10px; /* Menos espacio exterior en los lados */
+    }
+
+    .rsvp-container {
+        padding: 30px 20px; /* Menos espacio interno para ganar ancho en el form */
+        border-radius: 15px;
+    }
+
+    .section-title {
+        font-size: 1.8rem; /* Título un poco más pequeño para que no rompa línea */
+        margin-bottom: 20px;
+    }
+
+    .rsvp-form {
+        margin-top: 20px;
+    }
