@@ -99,10 +99,10 @@ color: var(--white);
 .countdown-item span { font-size: 1.4rem; }
 }
 
-.btn-floral {
+.btn-florall {
 padding: 12px 30px;
 background: transparent;
-border: 1px solid var(--gold);
+border: 1px solid var(--white);
 color: var(--white);
 cursor: pointer;
 transition: all 0.3s ease;
@@ -410,3 +410,14 @@ border-top: 4px solid var(--gold);
     .rsvp-form {
         margin-top: 20px;
     }
+    }
+    .btn-floral {
+padding: 12px 30px;
+background: transparent;
+border: 1px solid var(--gold);
+color: var(--gold);
+cursor: pointer;
+transition: all 0.3s ease;
+text-transform: uppercase;
+letter-spacing: 2px;
+}
