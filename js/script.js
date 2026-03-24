@@ -6,7 +6,7 @@ AOS.init({
 
 // Cuenta regresiva
 const updateCountdown = () => {
-    const weddingDate = new Date(2026, 6, 25, 17, 0, 0).getTime();
+    const weddingDate = new Date(2026, 6, 25, 11, 0, 0).getTime();
     const now = new Date().getTime();
     const gap = weddingDate - now;
 
